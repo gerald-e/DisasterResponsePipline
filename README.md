@@ -1,6 +1,6 @@
 # Disaster Response Pipeline Project
 
-### Table of Contents
+## Table of Contents
 
 1. [Project Motivation](#motivation)
 2. [Installation](#installation)
@@ -56,7 +56,7 @@ Credits must be given to Udacity for the starter codes and FigureEight for provd
 * [Udacity](https://www.udacity.com/)
 * [Figure Eight](https://www.figure-eight.com/)
 
-### Instructions<a name="instructions"></a>
+## Instructions<a name="instructions"></a>
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
@@ -67,4 +67,10 @@ Credits must be given to Udacity for the starter codes and FigureEight for provd
 2. Run the following command in the app's directory to run your web app.
     `python run.py`
 
-3. Go to http://0.0.0.0:3001/
+3. Get your environment ids with 
+    `env|grep WORK`
+   Change the space-id and space-domain in the https string like this
+    `https://SPACEID-3001.SPACEDOMAIN`
+   then open a new tab in your browser and 
+   copy the link and go to i.e. `https://view6914b2f4-3001.udacity-student-workspaces.com/`
+   alternative
