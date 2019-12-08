@@ -46,6 +46,11 @@ def index():
     top_category_count = df.iloc[:,4:].sum().sort_values(ascending=False)[1:6]
     top_category_names = list(top_category_count.index)
     
+    # distribution categories
+    cats = df[df.columns[5:]]
+    cats_counts = cats.mean()*cats.shape[0]
+    cats_names = list(cats_counts.index)
+    
     # create visuals
     graphs = [
         # first graph is the genre graph
@@ -86,7 +91,26 @@ def index():
                     'title': "Categories"
                 }
             }
-        }
+        },
+        # Third graph shows the distribution category
+        {
+            'data': [
+                Bar(
+                    x=cats_names,
+                    y=cats_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Category"
+                }
+            }
+        }        
     ]
     
     # encode plotly graphs in JSON
