@@ -109,11 +109,21 @@ def build_model():
                         ('clf', MultiOutputClassifier(RandomForestClassifier()))
                         ])
 
-    parameters = {'clf__estimator__n_estimators': [50, 100],
-                  'clf__estimator__min_samples_split': [2, 3, 4],
-                  'clf__estimator__criterion': ['entropy', 'gini']
-                 }
-    cv = GridSearchCV(pipeline, param_grid=parameters)
+    # params dict to tune a model
+    # parameters = {
+    #     'clf__estimator__min_samples_split': [2, 4],
+    #     'clf__estimator__max_features': [None, 'log2', 'sqrt'],
+    #     'clf__estimator__criterion': ['gini', 'entropy'],
+    #     'clf__estimator__max_depth': [25, 100, 200],
+    # }
+    parameters = {
+        'clf__estimator__min_samples_split': [2, 4],
+        'clf__estimator__max_features': [None, 'log2', 'sqrt'],
+        'clf__estimator__criterion': ['gini', 'entropy'],
+        'clf__estimator__max_depth': [10, 50, None],
+    }
+    # instantiate a gridsearchcv object with the params defined
+    cv = GridSearchCV(pipeline, param_grid=parameters, verbose=4, n_jobs=8)
     
     return cv
 
@@ -166,7 +176,7 @@ def main():
         
         starttime = time.time()
         print('Training model...')
-        model.fit(X_train, Y_train)
+        model.fit(X_train.as_matrix(), Y_train.as_matrix())
         runtime = time.time() - starttime
         print('Function completed in {:.0f}m {:.0f}s'.format(runtime // 60, runtime % 60))
         
