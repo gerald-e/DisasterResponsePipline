@@ -73,4 +73,5 @@ Credits must be given to Udacity for the starter codes and FigureEight for provd
     `https://SPACEID-3001.SPACEDOMAIN`
    then open a new tab in your browser and 
    copy the link and go to i.e. `https://view6914b2f4-3001.udacity-student-workspaces.com/`
-   alternative
+   alternativ
+   go to http://0.0.0.0:3001/
